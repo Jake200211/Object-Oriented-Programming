@@ -1,7 +1,7 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
 import javafx.scene.media.Media;
@@ -13,21 +13,29 @@ import javafx.animation.Timeline;
 import javafx.animation.KeyFrame;
 
 public class ProgrammingExercise16_21 extends Application {
-	protected TextField count = new TextField();
-		protected Media media = new Media("https://liveexample.pearsoncmg.com/common/audio/anthem/anthem0.mp3");
-		protected MediaPlayer mediaPlayer = new MediaPlayer(media);
-		protected Timeline animation;
-		
+	Media media = new Media("https://liveexample.pearsoncmg.com/common/audio/anthem/anthem0.mp3");
+	MediaPlayer mediaPlayer = new MediaPlayer(media);
+	Timeline animation;
+	
 	@Override
 	public void start(Stage primaryStage) {
+		Pane pane = new Pane();
+		TextField count = new TextField();
 		count.setAlignment(Pos.CENTER);
 		count.setFont(Font.font(60));
-		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+		mediaPlayer.setCycleCount(Timeline.INDEFINITE);
 		
-		StackPane pane = new StackPane(count);
+		animation = new Timeline(new KeyFrame(Duration.millis(1000), e -> {
+			int number = Integer.parseInt(count.getText());
+			if (number > 0) {
+				number--;
+				count.setText(Integer.toString(number));
+			}
+			else {
+				mediaPlayer.play();
+			}
+		}));
 		
-		animation = new Timeline(
-		new KeyFrame(Duration.millis(1000), e -> run()));
 		animation.setCycleCount(Timeline.INDEFINITE);
 		
 		count.setOnKeyPressed(e -> {
@@ -35,24 +43,15 @@ public class ProgrammingExercise16_21 extends Application {
 						animation.play();
 					}
 				});
-				
+		
 		Scene scene = new Scene(pane, 500, 100);
 		primaryStage.setTitle("ProgrammingExercise16-21");
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		pane.getChildren().add(count);
 	}
 	
-	private void run() {
-		if (Integer.parseInt(count.getText()) > 0) {
-			mediaPlayer.pause();
-			mediaPlayer.seek(Duration.ZERO);
-			count.setText(String.valueOf(
-			Integer.parseInt(count.getText()) - 1));
-		}
-				
-		if (count.getText().equals("0")) {
-			animation.pause();
-			mediaPlayer.play();
-		}
+	private static void main(String[] args) {
+		Application.launch(args);
 	}
 }
