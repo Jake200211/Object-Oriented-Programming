@@ -23,6 +23,9 @@ My motivation for this project was mainly that I had to because it was a part of
 
 What you must do is download the .java file and run it in a program that accepts .java files.
 
+# Tests
+I used JUnit4 to test my project.
+
 # Contributors
 
 The only contributor to this project was myself.  I've been really excited for this project so I've spent a lot of time from the past week or 2 on this project.
