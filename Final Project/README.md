@@ -7,8 +7,8 @@ This final project is a fun game in which you must pop all of the circles in a s
 What you will be doing with this code is when you click on the colored circles, they will disappear.  Once all of the circles have disappeared, or the timer has run out the game is over.
 Example: This is the code that creates my timer.
 
-animation = new Timeline(new KeyFrame(Duration.millis(1000), e -> {
-
+	animation = new Timeline(new KeyFrame(Duration.millis(1000), e -> {
+				
 			int number = Integer.parseInt(count.getText());
 			
 			if (number > 0) {
