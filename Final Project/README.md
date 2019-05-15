@@ -8,15 +8,11 @@ What you will be doing with this code is when you click on the colored circles, 
 Example: This is the code that creates my timer.
 
 	animation = new Timeline(new KeyFrame(Duration.millis(1000), e -> {
-				
 			int number = Integer.parseInt(count.getText());
 			
 			if (number > 0) {
-			
 				number--;
-				
 				count.setText(Integer.toString(number));
-				
 			}
 
 # Motivation
