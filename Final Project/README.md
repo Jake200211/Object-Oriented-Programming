@@ -24,7 +24,7 @@ My motivation for this project was mainly that I had to because it was a part of
 What you must do is download the .java file and run it in a program that accepts .java files.
 
 # Tests
-I used JUnit4 to test my project.
+Most of the testing I did was debugging my code and manually and visually testing it.  Another thing I did was print out the counter so I could make sure it was working correctly.  I also used JUnit4 to test my project.
 
 # Contributors
 
